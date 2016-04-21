@@ -47,9 +47,7 @@ def send_email
     smtp = Net::SMTP.new('smtp.gmail.com', 587)
     smtp.enable_starttls
        smtp.start('gmail.com', USERNAME, PASSWORD, :login) do
-          smtp.send_message(msg, FROM_EMAIL, RECIPIENTS
-
-          )
+          smtp.send_message(msg, FROM_EMAIL, RECIPIENTS)
       end
  # end
 end
