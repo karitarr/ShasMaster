@@ -1,1 +1,2 @@
-# life_hacking
+# Lifehacking Scripts to make for glorious happy
+
