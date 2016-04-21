@@ -45,9 +45,10 @@ def send_email
   #TODO only send if array is > 1
   all_movies = get_movies(70, "in-theaters", certified="true") + all_movies = get_movies(70, "dvd-all", certified="true")
   msg = "Subject: ShasMaster Says...\n\nHere's the latest horror movies you need to see: \n\n" + all_movies.join("\n\n***\n\n")
-  smtp = Net::SMTP.new('smtp.gmail.com', 587)
-  smtp.enable_starttls
-  # TODO encrypt password (https://github.com/fcheung/keychain or use a config file)
+  unless all_movies.length == 0
+    smtp = Net::SMTP.new('smtp.gmail.com', 587)
+    smtp.enable_starttls
+    # TODO encrypt password (https://github.com/fcheung/keychain or use a config file)
      smtp.start('gmail.com', 'karitarr', 'lucca1234', :login) do
         smtp.send_message(msg, 'karitarr@gmail.com',
           [
@@ -57,6 +58,7 @@ def send_email
           ]
         )
     end
+  end
 end
 
 shasm
