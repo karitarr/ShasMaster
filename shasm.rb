@@ -19,13 +19,13 @@ def get_movies(min_score=90, availability="in-theaters", certified="true", genre
   #fetches list of movies already seen from local file
 
   #TODO figure out how to pass in a users local pathway, config file?
-  log_file = open("/Users/kari_tarr/movies_seen.txt", "r")
+  log_file = open("/Users/kari_tarr/Dropbox/code/life_hacking/movies_seen.txt", "r")
   movies_seen = log_file.read
 
   #append only new movies to local file
   for m in data['results']
     unless movies_seen.include?(m['title'] + "\n")
-      log_file = open("/Users/kari_tarr/movies_seen.txt", "a") { |f|
+      log_file = open("/Users/kari_tarr/Dropbox/code/life_hacking/movies_seen.txt", "a") { |f|
           f << m['title'] + "\n"
       }
       new_movies.push(
