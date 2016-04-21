@@ -49,7 +49,13 @@ def send_email
   smtp.enable_starttls
   # TODO encrypt password (https://github.com/fcheung/keychain or use a config file)
      smtp.start('gmail.com', 'karitarr', 'lucca1234', :login) do
-        smtp.send_message(msg, 'karitarr@gmail.com', ['kari.tarr@airbnb.com', 'herman.yu@airbnb.com', 'karitarr@gmail.com', 'manuel@summer.ai'])
+        smtp.send_message(msg, 'karitarr@gmail.com',
+          [
+            'herman.yu@airbnb.com',
+            'karitarr@gmail.com',
+            'manuel@summer.ai'
+          ]
+        )
     end
 end
 
