@@ -2,7 +2,7 @@
 require 'json'
 require 'rest-client'
 require 'net/smtp'
-require_relative 'config/settings1'
+require_relative 'config/settings'
 
 def shasm
   send_email
@@ -42,14 +42,14 @@ end
 
 def send_email
   all_movies = get_movies(70, "in-theaters", certified="true") + all_movies = get_movies(70, "dvd-all", certified="true")
- # if all_movies.length > 1
+  if all_movies.length > 1
     msg = "Subject: ShasMaster Says...\n\nHere's the latest horror movies you need to see: \n\n" + all_movies.join("\n\n***\n\n")
     smtp = Net::SMTP.new('smtp.gmail.com', 587)
     smtp.enable_starttls
        smtp.start('gmail.com', USERNAME, PASSWORD, :login) do
           smtp.send_message(msg, FROM_EMAIL, RECIPIENTS)
       end
- # end
+  end
 end
 
 shasm
